@@ -1,0 +1,155 @@
+$primary-color: #FFEFE7;                      // Declaramos nuestras variables de colores principales
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$quartery-color: #FA9500;
+$primary-text-color: #7C6A0A;
+$font-stack: 'IBM Plex Sans', sans-serif;       // Declaramos nuestra tipografía principal
+$paragraph-font-size: 1.5em;                   // Declaramos el tamaño de fuente de los párrafos
+
+body { 
+    margin: 0px;
+    padding: 0px;
+    background-color: $primary-color;
+    font-family: $font-stack;
+}
+
+nav {
+    background-color: $primary-color;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    color: $primary-text-color;
+    padding: 15px;
+    p {
+        font-size: $paragraph-font-size;
+        padding-left: 30px;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    .icons {
+        display: flex;
+        gap: 15px;
+        button {
+            background: none;
+            border-style: none;
+        }
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        gap: 0;
+    }
+}
+
+article {
+    width: auto;
+    color: $primary-text-color;
+    padding-top: 70px;
+    padding-left: 45px;
+    padding-right: 45px;
+    display: flex;
+    justify-content: space-between;
+    .impact-section {
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+        gap: 25px;
+    }
+    h1 {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+    }
+    p {
+        font-size: $paragraph-font-size;
+    }
+    button {
+        width: 12vw;
+        padding: 20px;
+        background-color: $quartery-color;
+        border-style: none;
+        border-radius: 35px;
+        color: white;
+        font-size: 1em;
+    }
+    img {
+        width: 25vw;
+        border-radius: 19px;
+    }
+}
+
+
+section {
+    width: auto;
+    height: auto;
+    padding: 60px;
+    h2 {
+        color: $primary-text-color;
+        font-size: 2em;
+    }
+    .healthcare {
+        padding-bottom: 60px;
+        h2 {
+            font-weight: 300;
+            padding-bottom: 60px;
+        }
+        .card-section {
+            display: flex;
+            width: auto;
+            height: auto;
+            justify-content: center;
+            align-items: center;
+            column-gap: 200px;
+            row-gap: 80px;
+            flex-wrap: wrap;
+        }
+        .product-card {
+            width: 14vw;
+            height: 45vh;
+            background-color: $secondary-color;
+            color: $primary-text-color;
+            padding: 20px;
+            border-radius: 8px;
+            .icon {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                padding-bottom: 12px;
+                svg {
+                    width: 28px;
+                    height: 28px;
+                }
+            }
+            .product-image {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 12vw;
+                    height: 30vh;
+                    object-fit: cover;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+
+    // Aplicamos herencia para ahorrar código
+    .furniture {
+        @extend .healthcare;
+        .product-card {
+           background-color: $tertiary-color;
+           color: white;
+        }
+    }
+}
+
+footer {
+    background-color: $quartery-color;
+    width: 100%;
+    height: 250px;
+}
