@@ -1,10 +1,25 @@
-$primary-color: #FFEFE7;                      // Declaramos nuestras variables de colores principales
+$primary-color: #FFEFE7;                              // Declaramos nuestras variables de colores principales
 $secondary-color: #FFDAC6;
 $tertiary-color: #BABD8D;
 $quartery-color: #FA9500;
 $primary-text-color: #7C6A0A;
-$font-stack: 'IBM Plex Sans', sans-serif;       // Declaramos nuestra tipografía principal
-$paragraph-font-size: 1.5em;                   // Declaramos el tamaño de fuente de los párrafos
+$font-stack: 'IBM Plex Sans', sans-serif;               // Declaramos nuestra tipografía principal
+$paragraph-font-size: 1.5em;                            // Declaramos el tamaño de fuente de los párrafos
+
+@mixin flexCenter($direction, $content, $align) {       // Creamos un mixin con Argumentos para centrar elementos con flexbox
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+
+@mixin buttonStyle {
+    button {
+        background: none;
+        border-style: none;
+    }
+}
+
 
 body { 
     margin: 0px;
@@ -14,11 +29,10 @@ body {
 }
 
 nav {
+    @include flexCenter(row, space-between, center);    // Incluimos nuestro mixin de flexbox con argumentos
     background-color: $primary-color;
-    width: auto;
-    display: flex;
-    justify-content: space-between;
     color: $primary-text-color;
+    width: auto;
     padding: 15px;
     p {
         font-size: $paragraph-font-size;
@@ -31,10 +45,7 @@ nav {
     .icons {
         display: flex;
         gap: 15px;
-        button {
-            background: none;
-            border-style: none;
-        }
+        @include buttonStyle;       // Incluimos nuestro mixin de botones
     }
 
     @media (min-width: 768px) {
@@ -44,16 +55,14 @@ nav {
 }
 
 article {
-    width: auto;
+    @include flexCenter(row, space-between, center);
     color: $primary-text-color;
+    width: auto;
     padding-top: 70px;
     padding-left: 45px;
     padding-right: 45px;
-    display: flex;
-    justify-content: space-between;
     .impact-section {
-        display: flex;
-        flex-direction: column;
+        @include flexCenter(column, space-evenly, flex-start);
         padding-top: 50px;
         gap: 25px;
     }
@@ -65,13 +74,13 @@ article {
     p {
         font-size: $paragraph-font-size;
     }
+    @include buttonStyle;
     button {
+        background-color: $quartery-color;
+        color: white;
         width: 12vw;
         padding: 20px;
-        background-color: $quartery-color;
-        border-style: none;
         border-radius: 35px;
-        color: white;
         font-size: 1em;
     }
     img {
@@ -96,20 +105,18 @@ section {
             padding-bottom: 60px;
         }
         .card-section {
-            display: flex;
+            @include flexCenter(row, space-evenly, center);
             width: auto;
             height: auto;
-            justify-content: center;
-            align-items: center;
             column-gap: 200px;
             row-gap: 80px;
             flex-wrap: wrap;
         }
         .product-card {
-            width: 14vw;
-            height: 45vh;
             background-color: $secondary-color;
             color: $primary-text-color;
+            width: 14vw;
+            height: 45vh;
             padding: 20px;
             border-radius: 8px;
             .icon {
