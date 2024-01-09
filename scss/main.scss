@@ -20,7 +20,6 @@ $paragraph-font-size: 1.5em;                            // Declaramos el tamaño
     }
 }
 
-
 body { 
     margin: 0px;
     padding: 0px;
@@ -82,13 +81,16 @@ article {
         padding: 20px;
         border-radius: 35px;
         font-size: 1em;
+        &:hover {
+            transform: scale(1.1);
+            transition-duration: 0.5s;
+        }
     }
     img {
         width: 25vw;
         border-radius: 19px;
     }
 }
-
 
 section {
     width: auto;
@@ -155,8 +157,80 @@ section {
     }
 }
 
+.about-us {
+    padding-bottom: 60px;
+    h2 {
+        font-weight: bold;
+        padding-bottom: 60px;
+    }
+    .mission-section {
+        @include flexCenter(row, space-evenly, center);
+        .earth {
+            $text-color: #E86424;
+            width: 30vw;
+            display: flex;
+            gap: 40px;
+            color: $text-color;
+            img {
+                object-fit: contain;
+            }
+            p {
+                text-align: center;
+                font-size: $paragraph-font-size;
+            }
+        }
+        .innovation {
+            @extend .earth;
+        }
+    }
+}
+
+.gallery {
+    h2 {
+        color: $primary-text-color;
+        font-size: 2em;
+    }
+    .gallery-images {
+        @include flexCenter(row, space-between, center);
+        img {
+            width: 28vw;
+            height: 45vh;
+            object-fit: cover;
+            object-position: 5px 35%;
+            border-radius: 16px;
+            &:hover {
+                transform: scale(1.1);
+                transition-duration: 0.4s;
+            }
+        }
+    }
+}
+
+.location {
+    $text-color: #E86424;
+    color: $text-color;
+    h2 {
+        padding-bottom: 60px;
+        padding-top: 60px;
+    }
+    .map {
+        @include flexCenter(row, center, center);
+        padding-bottom: 50px;
+    }
+    p, h3 {
+        font-size: $paragraph-font-size;
+    }
+}
+
 footer {
     background-color: $quartery-color;
     width: 100%;
-    height: 250px;
+    height: auto;
+    color: white;
+    padding: 40px;
+    .social-media {
+        @include flexCenter(row, center, center);
+        gap: 40px;
+        padding-bottom: 40px;
+    }
 }
